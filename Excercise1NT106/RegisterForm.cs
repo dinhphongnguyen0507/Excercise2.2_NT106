@@ -14,7 +14,7 @@ namespace Excercise1NT106
         public RegisterForm()
         {
             InitializeComponent();
-            
+
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -29,7 +29,7 @@ namespace Excercise1NT106
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            Close();
+            this.Close();
         }
 
         private void lblLoiMatKhau_Click(object sender, EventArgs e)
@@ -83,7 +83,7 @@ namespace Excercise1NT106
                 lblLoiMatKhau.Text = "Mật khẩu phải có ít nhất 8 ký tự.";
                 hopLe = false;
             }
-            else if ( !Regex.IsMatch(matKhau, @"[A-Za-z]")  || !Regex.IsMatch(matKhau, @"[0-9]")  )
+            else if (!Regex.IsMatch(matKhau, @"[A-Za-z]") || !Regex.IsMatch(matKhau, @"[0-9]"))
             {
                 lblLoiMatKhau.Text = "Mật khẩu phải chứa cả chữ và số.";
                 hopLe = false;
@@ -121,8 +121,18 @@ namespace Excercise1NT106
                     hopLe = false;
                 }
             }
+         
 
 
+        }
+
+        private void RegisterForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtXacNhanMatKhau_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

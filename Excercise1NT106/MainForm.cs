@@ -14,5 +14,15 @@ namespace Excercise1NT106
         {
             InitializeComponent();
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dangxuatBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
