@@ -8,7 +8,12 @@ namespace Excercise1NT106
     public static class DatabaseHelper
     {
         private const string ChuoiKetNoi =
-            @"Server=localhost\SQL2025LAB; Database=QuanLyNguoiDung; Trusted_Connection=True; TrustServerCertificate=True;";
+                            @"Server=QuanLyNguoiDung.mssql.somee.com;" +
+                           "Database=QuanLyNguoiDung;" +
+                           "User Id=phunguyenthanh72_SQLLogin_1;" +
+                           "Password=zkd2vjesj1;" +
+                           "TrustServerCertificate=True;";
+ 
 
         public static async Task<bool> KiemTraTenTonTaiAsync(string tenDangNhap)
         {
