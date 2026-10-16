@@ -11,5 +11,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Data.SqlClient" Version="7.1.1" />
   </ItemGroup>
-
+    <Target Name="UnblockResx" BeforeTargets="CompileLicxFiles;GenerateResources">
+    <Exec Command="powershell -Command &quot;Unblock-File -Path '$(MSBuildProjectDirectory)\*.resx'&quot;" ContinueOnError="true" />
+  </Target>
 </Project>
