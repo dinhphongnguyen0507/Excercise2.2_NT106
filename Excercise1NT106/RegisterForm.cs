@@ -45,7 +45,7 @@ namespace Excercise1NT106
             lblLoiHoTen.Text = "";
             lblLoiEmail.Text = "";
         }
-        private void BtnDangKy_Click(object sender, EventArgs e)
+        private async void BtnDangKy_Click(object sender, EventArgs e)
         {
             XoaTatCaLoi();
 
@@ -121,8 +121,42 @@ namespace Excercise1NT106
                     hopLe = false;
                 }
             }
-         
+            if (!hopLe) return;
 
+            try
+            {
+                BtnDangKy.Enabled = false;
+                Cursor = Cursors.WaitCursor;
+
+                // kiểm tra tên đăng nhập tồn tại
+                bool tonTai = await DatabaseHelper.KiemTraTenTonTaiAsync(tenDangNhap);
+                if (tonTai)
+                {
+                    lblLoiTen.Text = "Tên đăng nhập đã tồn tại.";
+                    return;
+                }
+
+                // tạo salt và băm
+                var tup = MatKhau.Tao(matKhau);
+                string salt = tup.Salt;
+                string bam = tup.Bam;
+
+                bool ok = await DatabaseHelper.ThemNguoiDungAsync(tenDangNhap, bam, salt, hoTen, email);
+                if (ok)
+                {
+                    MessageBox.Show("Đăng ký thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi khi lưu thông tin. Vui lòng thử lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            finally
+            {
+                BtnDangKy.Enabled = true;
+                Cursor = Cursors.Default;
+            }
 
         }
 
