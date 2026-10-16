@@ -1,5 +1,5 @@
 <Project>
-  <PropertyGroup>
-    <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
-  </PropertyGroup>
+	<Target Name="UnblockResxAutomatic" BeforeTargets="BeforeBuild;GenerateResources">
+		<Exec Command="powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;Get-ChildItem -Path '$(MSBuildProjectDirectory)' -Recurse -Filter *.resx | Unblock-File&quot;" ContinueOnError="true" />
+	</Target>
 </Project>
