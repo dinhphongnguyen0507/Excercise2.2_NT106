@@ -92,6 +92,7 @@
             lblThongbaoloi.Size = new Size(284, 17);
             lblThongbaoloi.TabIndex = 5;
             lblThongbaoloi.Text = "Tên đăng nhập hoặc mật khẩu không đúng";
+            lblThongbaoloi.Visible = false;
             // 
             // rememberBox
             // 
