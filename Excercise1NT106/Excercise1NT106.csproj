@@ -11,7 +11,19 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Data.SqlClient" Version="7.1.1" />
   </ItemGroup>
-    <Target Name="UnblockResx" BeforeTargets="CompileLicxFiles;GenerateResources">
-    <Exec Command="powershell -Command &quot;Unblock-File -Path '$(MSBuildProjectDirectory)\*.resx'&quot;" ContinueOnError="true" />
-  </Target>
+    <PropertyGroup>
+  <!-- Thêm 2 dòng này bên trong PropertyGroup -->
+  <GenerateResourceMSBuildArchitecture>CurrentArchitecture</GenerateResourceMSBuildArchitecture>
+  <GenerateResourceMSBuildRuntime>CurrentRuntime</GenerateResourceMSBuildRuntime>
+</PropertyGroup>
+	<PropertyGroup>
+		<!-- Thêm 2 dòng này bên trong PropertyGroup -->
+		<GenerateResourceMSBuildArchitecture>CurrentArchitecture</GenerateResourceMSBuildArchitecture>
+		<GenerateResourceMSBuildRuntime>CurrentRuntime</GenerateResourceMSBuildRuntime>
+	</PropertyGroup>
+	
+	<PropertyGroup>
+  <DisableMSBuildAssemblyCopyCheck>true</DisableMSBuildAssemblyCopyCheck>
+  <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+</PropertyGroup>		
 </Project>
